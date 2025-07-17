@@ -58,7 +58,7 @@ export default function Contact() {
               <FaPhoneAlt className="text-maroon text-2xl mt-1" />
               <div>
                 <h4 className="font-semibold">Phone</h4>
-                <p>+91 98765 43210</p>
+                <p>+91 98765 00000</p>
               </div>
             </div>
 
