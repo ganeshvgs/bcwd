@@ -14,10 +14,10 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 text-white flex flex-col items-center justify-center">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-md">
-          Welcome to BCWD Suratkal Hostel
+          Welcome to BCWD Hostel Surathkal
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mb-8 drop-shadow-sm text-center">
-          A Government of Karnataka initiative under the Backward Class Welfare Department, nurturing 130+ bright futures since 2002.
+          A Government of Karnataka initiative under the Backward Class Welfare Department, nurturing 1600+ bright futures since 2002.
         </p>
         <a href="#apply">
           <button className="border-2 border-maroon text-blue px-6 py-2 rounded-full hover:bg-maroon hover:text-white transition-all duration-300">

@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 @import './assets/animations.css';
+
 /* Custom Scrollbar & Base Styling */
 body {
   font-family: 'Inter', sans-serif;
@@ -19,4 +20,118 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #800000;
   border-radius: 4px;
+}
+
+@keyframes fadeSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeSlideDown {
+  animation: fadeSlideDown 0.6s ease-out;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeSlideUp {
+  animation: fadeSlideUp 0.8s ease-out both;
+}
+
+/* Animated Gradient Background Keyframes */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+/* Hover glow for keywords */
+.hover-glow:hover {
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+  color: #FFD700;
+}
+
+/* Glow button hover */
+.glow-button {
+  @apply bg-maroon text-white px-6 py-2 rounded-full transition-all duration-300 shadow-md;
+}
+.glow-button:hover {
+  box-shadow: 0 0 10px rgba(128, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.5);
+  transform: scale(1.05);
+}
+
+/* Optional texture background class */
+.bg-texture {
+
+  background-size: cover;
+  background-repeat: repeat;
+  opacity: 0.05;
+  position: absolute;
+  z-index: 0;
+}
+body {
+  margin: 0;
+}
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 25s linear infinite;
+}
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 10s ease-in-out infinite;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  background-color: #FFF8E1;
+  overflow-x: hidden; /* ✅ Prevent horizontal scrollbar */
 }
