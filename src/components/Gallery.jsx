@@ -1,26 +1,26 @@
 const images = [
   {
-    src: "https://photos.fife.usercontent.google.com/pw/AP1GczMhyUzkZKSsJ-KBePTerp3pMDBpeZ_avESh5sfme9bs4fggHaWJTn33=w293-h220-no?authuser=0",
+    src: "https://drive.google.com/file/d/1OF9H7sfzU0nYOfdjJSY6HmNiAHm4E0DF/view?usp=sharing",
     caption: "Front View of Hostel",
   },
   {
-    src: "https://photos.fife.usercontent.google.com/pw/AP1GczPW8MzVJe63EdMA3khmnRQPYKnLcOsc_49Pm35BMedQNxPtSLshMVfn=w905-h679-s-no-gm?authuser=0",
+    src: "https://drive.google.com/file/d/1GFmpXE9lqhaH1k2BXY1wUDm3DES0Veh1/view?usp=sharing",
     caption: "Group Photo of Students",
   },
   {
-    src: "https://photos.fife.usercontent.google.com/pw/AP1GczPYRkFXgCXce0ct0VlmMBomesT4VRKEJ7xOkoU8O5qnv9Jo_AqjOPwQ=w314-h679-s-no-gm?authuser=0",
+    src: "https://drive.google.com/file/d/186cofqJOANv2VMqYwxW27jaYyreA6Ur-/view?usp=sharing",
     caption: "Hostel Day / Festival Celebration",
   },
   {
-    src: "https://photos.fife.usercontent.google.com/pw/AP1GczMkKcjhT8gxvfMirVr-_IgLrDgGIzStbCLpPPT9rXMVUuXjTU93qfe3=w1207-h679-s-no-gm?authuser=0",
+    src: "https://drive.google.com/file/d/1bFlJEjsmt7gsV4_ce635Kt7gLoGIlXqT/view?usp=sharing",
     caption: "Sports Achievements",
   },
   {
-    src: "https://photos.fife.usercontent.google.com/pw/AP1GczMJbZn47gLzc-RRIqRpxsKeEZnFGIbFbkBiPo9O28U1J0nZ8-VaHBs9=w905-h679-s-no-gm?authuser=0",
+    src: "https://drive.google.com/file/d/1ze2h2nR0wG3WDmp0CiWeK7sv1y8cLh4A/view?usp=sharing",
     caption: "Main Entrance Area",
   },
   {
-    src: "https://photos.fife.usercontent.google.com/pw/AP1GczPrztBXY5to_vFsbnF9XsGtXZ2amN9C7ypaLXnrj-sV7kMOV9_YWINF=w453-h679-s-no-gm?authuser=0",
+    src: "https://drive.google.com/file/d/1xA_o4A8zs6SvL3vLQUWQ166XVszl551_/view?usp=sharing",
     caption: "Meal / Dining",
   },
 ];
