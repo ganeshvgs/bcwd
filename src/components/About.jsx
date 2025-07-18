@@ -5,7 +5,6 @@ export default function About() {
   const estimatedTotal = yearsRunning * avgStudentsPerYear;
   const formattedTotal = estimatedTotal.toLocaleString();
 
-  // Highlight style: maroon text with subtle underline on hover
   const highlightClass =
     "font-semibold text-maroon cursor-pointer relative transition-colors duration-300 hover:text-yellow-600 hover:underline";
 
@@ -13,16 +12,31 @@ export default function About() {
     <section
       id="about"
       aria-label="About BCWD Surathkal Hostel"
-      className="bg-gradient-to-b from-yellow-50 to-white py-24 px-6 md:px-20"
+      className="relative py-24 px-6 md:px-20 overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(circle at center, #fff9db 0%, #fff4b8 40%, #fff1a1 70%, #fff2aa 100%)",
+      }}
     >
-      <div className="max-w-4xl mx-auto text-center">
+      {/* Optional subtle glow behind container */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 rounded-3xl"
+        style={{
+          filter: "blur(150px)",
+          background:
+            "radial-gradient(circle at center, #ffe066 20%, transparent 80%)",
+        }}
+      />
+
+      <div className="max-w-4xl mx-auto text-center relative">
         <h2 className="text-3xl md:text-4xl font-extrabold text-maroon mb-3 tracking-wide leading-tight">
           About Our Hostel
         </h2>
 
         <div className="mx-auto mb-12 w-24 h-1 bg-maroon rounded-full shadow-sm"></div>
 
-        <article className="bg-white shadow-lg rounded-3xl p-10 text-gray-800 text-lg md:text-xl leading-relaxed">
+        <article className="bg-white shadow-lg rounded-3xl p-10 text-gray-800 text-lg md:text-xl leading-relaxed relative z-10">
           <p className="mb-8">
             Established in{" "}
             <span className={highlightClass}>2002</span>, the BCWD Surathkal Hostel is a proud initiative by the{" "}
