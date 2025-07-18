@@ -4,14 +4,32 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Sections to track
+  const navItems = ["home", "about", "facilities", "events", "gallery", "contact"];
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
+
+      // Check which section is currently in view
+      let current = "home";
+      navItems.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            current = id;
+          }
+        }
+      });
+      setActiveSection(current);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -28,23 +46,10 @@ export default function Navbar() {
 
   const toggleLogin = () => setLoginOpen((prev) => !prev);
 
-  // Nav items
-  const navItems = [
-    "home",
-    "about",
-    "facilities",
-    "events",
-    "gallery",
-    "contact",
-  ];
-
-  // Handles navigation for nav buttons
   const handleNavClick = (section) => {
     if (location.pathname !== "/") {
-      // If not on homepage, navigate to homepage with hash to trigger scroll there
       navigate(`/#${section}`);
     } else {
-      // If on homepage, scroll smoothly to section
       const element = document.getElementById(section);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
@@ -74,11 +79,13 @@ export default function Navbar() {
             <li key={item}>
               <button
                 onClick={() => handleNavClick(item)}
-                className="relative group capitalize bg-transparent border-none cursor-pointer text-gray-700"
+                className={`relative group capitalize bg-transparent border-none cursor-pointer ${
+                  activeSection === item
+                    ? "text-maroon font-bold underline underline-offset-4"
+                    : "text-gray-700"
+                } transition duration-300`}
               >
-                <span className="group-hover:text-maroon transition duration-300">
-                  {item}
-                </span>
+                <span className="group-hover:text-maroon">{item}</span>
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-maroon transition-all duration-300 group-hover:w-full"></span>
               </button>
             </li>
