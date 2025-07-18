@@ -1,10 +1,17 @@
-// src/pages/Login.jsx
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
-    <section className="min-h-screen bg-cream flex items-center justify-center px-6">
+    <section className="min-h-screen bg-cream flex flex-col items-center justify-center px-6">
+      <Link
+        to="/"
+        className="mb-6 text-maroon font-semibold hover:underline"
+      >
+        ← Back to Home
+      </Link>
+
       <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-maroon text-center mb-6">Hostel Login</h2>
+        <h2 className="text-2xl font-bold text-maroon text-center mb-6">Warden Login</h2>
         <form className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
