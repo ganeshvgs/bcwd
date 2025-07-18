@@ -1,28 +1,17 @@
+import photo1 from "../assets/gallery/photo1.jpg";
+import photo2 from "../assets/gallery/photo2.jpg";
+import photo3 from "../assets/gallery/photo3.jpg";
+import photo4 from "../assets/gallery/photo4.jpg";
+import photo5 from "../assets/gallery/photo5.jpg";
+import photo6 from "../assets/gallery/photo6.png"; // or .png if needed
+
 const images = [
-  {
-    src: "https://drive.google.com/file/d/1OF9H7sfzU0nYOfdjJSY6HmNiAHm4E0DF/view?usp=sharing",
-    caption: "Front View of Hostel",
-  },
-  {
-    src: "https://drive.google.com/file/d/1GFmpXE9lqhaH1k2BXY1wUDm3DES0Veh1/view?usp=sharing",
-    caption: "Group Photo of Students",
-  },
-  {
-    src: "https://drive.google.com/file/d/186cofqJOANv2VMqYwxW27jaYyreA6Ur-/view?usp=sharing",
-    caption: "Hostel Day / Festival Celebration",
-  },
-  {
-    src: "https://drive.google.com/file/d/1bFlJEjsmt7gsV4_ce635Kt7gLoGIlXqT/view?usp=sharing",
-    caption: "Sports Achievements",
-  },
-  {
-    src: "https://drive.google.com/file/d/1ze2h2nR0wG3WDmp0CiWeK7sv1y8cLh4A/view?usp=sharing",
-    caption: "Main Entrance Area",
-  },
-  {
-    src: "https://drive.google.com/file/d/1xA_o4A8zs6SvL3vLQUWQ166XVszl551_/view?usp=sharing",
-    caption: "Meal / Dining",
-  },
+  { src: photo1, caption: "Front View of Hostel" },
+  { src: photo2, caption: "Group Photo of Students" },
+  { src: photo3, caption: "Hostel Day / Festival Celebration" },
+  { src: photo4, caption: "Sports Achievements" },
+  { src: photo5, caption: "Main Entrance Area" },
+  { src: photo6, caption: "Meal / Dining" },
 ];
 
 export default function Gallery() {
