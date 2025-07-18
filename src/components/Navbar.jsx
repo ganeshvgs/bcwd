@@ -24,14 +24,14 @@ export default function Navbar() {
         <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-maroon via-yellow-200 to-maroon animate-gradient z-0" />
 
         {/* Title */}
-        <div className="text-maroon font-extrabold text-xl md:text-2xl tracking-wide z-10 whitespace-nowrap">
+        <div className="text-white font-extrabold text-xl md:text-2xl tracking-wide z-10 whitespace-nowrap">
           BCWD Surathkal
         </div>
 
         {/* Navigation Menu */}
         <Scrollspy
           items={["home", "about", "facilities", "events", "gallery", "contact"]}
-          currentClassName="text-maroon font-bold underline"
+          currentClassName="text-white font-bold underline"
           offset={-100}
           className="hidden md:flex gap-6 text-sm md:text-base font-medium text-gray-700 z-10"
         >
