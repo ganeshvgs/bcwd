@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Scrollspy from "react-scrollspy";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,8 +26,32 @@ export default function Navbar() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [loginOpen]);
 
-  // Toggle dropdown on click
   const toggleLogin = () => setLoginOpen((prev) => !prev);
+
+  // Nav items
+  const navItems = [
+    "home",
+    "about",
+    "facilities",
+    "events",
+    "gallery",
+    "contact",
+  ];
+
+  // Handles navigation for nav buttons
+  const handleNavClick = (section) => {
+    if (location.pathname !== "/") {
+      // If not on homepage, navigate to homepage with hash to trigger scroll there
+      navigate(`/#${section}`);
+    } else {
+      // If on homepage, scroll smoothly to section
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setLoginOpen(false);
+  };
 
   return (
     <header
@@ -43,31 +69,27 @@ export default function Navbar() {
         </div>
 
         {/* Navigation Menu */}
-        <Scrollspy
-          items={["home", "about", "facilities", "events", "gallery", "contact"]}
-          currentClassName="text-white font-bold underline"
-          offset={-100}
-          className="hidden md:flex gap-6 text-sm md:text-base font-medium text-gray-700 z-10"
-        >
-          {["home", "about", "facilities", "events", "gallery", "contact"].map(
-            (item) => (
-              <li key={item}>
-                <a href={`#${item}`} className="relative group capitalize">
-                  <span className="group-hover:text-maroon transition duration-300">
-                    {item}
-                  </span>
-                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-maroon transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              </li>
-            )
-          )}
+        <ul className="hidden md:flex gap-6 text-sm md:text-base font-medium text-gray-700 z-10">
+          {navItems.map((item) => (
+            <li key={item}>
+              <button
+                onClick={() => handleNavClick(item)}
+                className="relative group capitalize bg-transparent border-none cursor-pointer text-gray-700"
+              >
+                <span className="group-hover:text-maroon transition duration-300">
+                  {item}
+                </span>
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-maroon transition-all duration-300 group-hover:w-full"></span>
+              </button>
+            </li>
+          ))}
 
           {/* Login Dropdown */}
           <li id="login-dropdown" className="relative cursor-pointer">
             <button
               type="button"
               onClick={(e) => {
-                e.stopPropagation(); // Prevent document click from closing dropdown immediately
+                e.stopPropagation();
                 toggleLogin();
               }}
               className="bg-maroon text-white px-4 py-1 rounded inline-block hover:scale-105 transition select-none"
@@ -78,13 +100,13 @@ export default function Navbar() {
             {loginOpen && (
               <ul
                 className="absolute right-0 mt-2 w-40 bg-white rounded shadow-lg text-gray-700 font-medium z-20"
-                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside dropdown
+                onClick={(e) => e.stopPropagation()}
               >
                 <li>
                   <Link
                     to="/student-login"
                     className="block px-4 py-2 hover:bg-maroon hover:text-white transition"
-                    onClick={() => setLoginOpen(false)} // close dropdown on link click
+                    onClick={() => setLoginOpen(false)}
                   >
                     Student Login
                   </Link>
@@ -93,7 +115,7 @@ export default function Navbar() {
                   <Link
                     to="/login"
                     className="block px-4 py-2 hover:bg-maroon hover:text-white transition"
-                    onClick={() => setLoginOpen(false)} // close dropdown on link click
+                    onClick={() => setLoginOpen(false)}
                   >
                     Warden Login
                   </Link>
@@ -101,7 +123,7 @@ export default function Navbar() {
               </ul>
             )}
           </li>
-        </Scrollspy>
+        </ul>
       </nav>
     </header>
   );
