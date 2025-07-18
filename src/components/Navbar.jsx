@@ -16,13 +16,16 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (!e.target.closest("#login-dropdown")) {
+      if (loginOpen && !e.target.closest("#login-dropdown")) {
         setLoginOpen(false);
       }
     };
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
+  }, [loginOpen]);
+
+  // Toggle dropdown on click
+  const toggleLogin = () => setLoginOpen((prev) => !prev);
 
   return (
     <header
@@ -60,22 +63,28 @@ export default function Navbar() {
           )}
 
           {/* Login Dropdown */}
-          <li
-            id="login-dropdown"
-            className="relative cursor-pointer"
-            onMouseEnter={() => setLoginOpen(true)}
-            onMouseLeave={() => setLoginOpen(false)}
-          >
-            <span className="bg-maroon text-white px-4 py-1 rounded inline-block hover:scale-105 transition select-none">
+          <li id="login-dropdown" className="relative cursor-pointer">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent document click from closing dropdown immediately
+                toggleLogin();
+              }}
+              className="bg-maroon text-white px-4 py-1 rounded inline-block hover:scale-105 transition select-none"
+            >
               Login ▼
-            </span>
+            </button>
 
             {loginOpen && (
-              <ul className="absolute right-0 mt-2 w-40 bg-white rounded shadow-lg text-gray-700 font-medium z-20">
+              <ul
+                className="absolute right-0 mt-2 w-40 bg-white rounded shadow-lg text-gray-700 font-medium z-20"
+                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside dropdown
+              >
                 <li>
                   <Link
                     to="/student-login"
                     className="block px-4 py-2 hover:bg-maroon hover:text-white transition"
+                    onClick={() => setLoginOpen(false)} // close dropdown on link click
                   >
                     Student Login
                   </Link>
@@ -84,6 +93,7 @@ export default function Navbar() {
                   <Link
                     to="/login"
                     className="block px-4 py-2 hover:bg-maroon hover:text-white transition"
+                    onClick={() => setLoginOpen(false)} // close dropdown on link click
                   >
                     Warden Login
                   </Link>
