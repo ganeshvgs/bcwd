@@ -15,17 +15,17 @@ export default function About() {
       className="relative py-24 px-6 md:px-20 overflow-hidden"
       style={{
         background:
-          "radial-gradient(circle at center, #ffffff 0%, #fffde7 40%, #fff9c4 80%, #fffde7 100%)",
+          "radial-gradient(circle at center bottom, #ffffff 0%, #fffde7 40%, #fff9c4 80%, #fffde7 100%)",
       }}
     >
-      {/* Subtle radial glow behind container */}
+      {/* Subtle radial glow behind container shifted down */}
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 rounded-3xl"
         style={{
           filter: "blur(120px)",
           background:
-            "radial-gradient(circle at center, #fff59d 20%, transparent 80%)",
+            "radial-gradient(circle at center bottom, #fff59d 20%, transparent 80%)",
         }}
       />
 
