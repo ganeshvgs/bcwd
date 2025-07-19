@@ -1,6 +1,6 @@
 // src/components/WardenMessage.jsx
 
-import wardenImg from "../assets/images/src/assets/images/WhatsApp Image 2025-07-19 at 08.42.19_12c96a35.jpg"; // Replace with your image
+import wardenImg from "../assets/images/WhatsApp Image 2025-07-19 at 08.42.19_12c96a35.jpg"; // Replace with your image
 
 export default function WardenMessage() {
   return (
