@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X } from "lucide-react"; // Optional: Replace with your own icons
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Sections to track
   const navItems = ["home", "about", "facilities", "events", "gallery", "contact"];
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
 
-      // Check which section is currently in view
       let current = "home";
       navItems.forEach((id) => {
         const section = document.getElementById(id);
@@ -45,6 +45,7 @@ export default function Navbar() {
   }, [loginOpen]);
 
   const toggleLogin = () => setLoginOpen((prev) => !prev);
+  const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
 
   const handleNavClick = (section) => {
     if (location.pathname !== "/") {
@@ -56,6 +57,7 @@ export default function Navbar() {
       }
     }
     setLoginOpen(false);
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -65,15 +67,15 @@ export default function Navbar() {
       }`}
     >
       <nav className="w-full h-14 md:h-16 flex justify-between items-center px-4 md:px-10 relative">
-        {/* Gradient background */}
+        {/* Background gradient */}
         <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-maroon via-yellow-200 to-maroon animate-gradient z-0" />
 
-        {/* Title */}
+        {/* Logo */}
         <div className="text-white font-extrabold text-xl md:text-2xl tracking-wide z-10 whitespace-nowrap">
           BCWD Surathkal
         </div>
 
-        {/* Navigation Menu */}
+        {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 text-sm md:text-base font-medium text-gray-700 z-10">
           {navItems.map((item) => (
             <li key={item}>
@@ -131,7 +133,45 @@ export default function Navbar() {
             )}
           </li>
         </ul>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden z-10">
+          <button onClick={toggleMobileMenu} className="text-white">
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </nav>
+
+      {/* Mobile Slide-out Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white shadow-lg px-6 py-4 space-y-3 text-gray-800 font-medium">
+          {navItems.map((item) => (
+            <button
+              key={item}
+              onClick={() => handleNavClick(item)}
+              className="block w-full text-left capitalize py-1"
+            >
+              {item}
+            </button>
+          ))}
+          <div className="pt-2 border-t border-gray-200">
+            <Link
+              to="/student-login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 hover:text-maroon"
+            >
+              Student Login
+            </Link>
+            <Link
+              to="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 hover:text-maroon"
+            >
+              Warden Login
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
