@@ -3,7 +3,7 @@ import photo2 from "../assets/gallery/photo2.jpg";
 import photo3 from "../assets/gallery/photo3.jpg";
 import photo4 from "../assets/gallery/photo4.jpg";
 import photo5 from "../assets/gallery/photo5.jpg";
-import photo6 from "../assets/gallery/photo6.png"; // or .png if needed
+import photo6 from "../assets/gallery/photo6.png";
 
 const images = [
   { src: photo1, caption: "Front View of Hostel" },
@@ -19,17 +19,19 @@ export default function Gallery() {
     <section id="gallery" className="bg-cream py-20 px-6 md:px-10">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-maroon mb-10">Gallery</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+        {/* Responsive Grid: 1 col on small, 2 on medium, 3 on large */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {images.map((item, index) => (
             <div
               key={index}
               className="relative group rounded-xl overflow-hidden shadow transition duration-300 hover:scale-105 hover:ring-4 hover:ring-maroon"
             >
-              {/* Image */}
+              {/* Image with responsive height */}
               <img
                 src={item.src}
                 alt={`Gallery ${index + 1}`}
-                className="w-full h-64 object-cover"
+                className="w-full h-[200px] sm:h-[250px] md:h-64 object-cover"
               />
 
               {/* Overlay Caption */}
