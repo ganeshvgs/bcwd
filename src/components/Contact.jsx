@@ -28,9 +28,9 @@ export default function Contact() {
         ></iframe>
       </div>
 
-      {/* ✅ Contact Info Box (hidden on map click) */}
+      {/* ✅ Contact Info Box (shown until map clicked) */}
       {!hideInfo && (
-        <div className="relative z-10 max-w-5xl mx-auto text-center bg-black/60 p-10 rounded-xl backdrop-blur-md">
+        <div className="relative z-10 max-w-5xl mx-auto text-center bg-black/60 p-6 sm:p-10 rounded-xl backdrop-blur-md fade-in-up">
           <h2 className="text-3xl md:text-4xl font-bold text-yellow-300 mb-4">
             Contact Information
           </h2>
@@ -39,34 +39,43 @@ export default function Contact() {
             Have questions or need more information? Reach out to us!
           </p>
 
-          <div className="grid gap-8 md:grid-cols-3 text-left">
-            <div className="flex items-start gap-4 p-6 bg-white/90 text-maroon rounded-xl hover:shadow-lg transition">
-              <FaMapMarkerAlt className="text-maroon text-2xl mt-1" />
+          {/* Responsive Grid */}
+          <div className="grid gap-6 md:gap-8 sm:grid-cols-2 md:grid-cols-3">
+            {/* Address */}
+            <div className="flex flex-col items-center text-center sm:text-left sm:items-start gap-3 p-6 bg-white/90 text-maroon rounded-xl hover:shadow-lg transition zoom-in">
+              <FaMapMarkerAlt className="text-maroon text-3xl" />
               <div>
                 <h4 className="font-semibold">Address</h4>
-                <p>
-                  BCWD Hostel Surathkal,
-                  <br />
-                  Near Surathkal Police Station,
-                  <br />
+                <p className="text-sm mt-1">
+                  BCWD Hostel Surathkal,<br />
+                  Near Surathkal Police Station,<br />
                   Surathkal, Karnataka
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-6 bg-white/90 text-maroon rounded-xl hover:shadow-lg transition">
-              <FaPhoneAlt className="text-maroon text-2xl mt-1" />
+            {/* Phone */}
+            <div className="flex flex-col items-center text-center sm:text-left sm:items-start gap-3 p-6 bg-white/90 text-maroon rounded-xl hover:shadow-lg transition zoom-in">
+              <FaPhoneAlt className="text-maroon text-3xl" />
               <div>
                 <h4 className="font-semibold">Phone</h4>
-                <p>+91 98765 00000</p>
+                <a href="tel:+919876500000" className="hover:underline text-sm mt-1">
+                  +91 98765 00000
+                </a>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-6 bg-white/90 text-maroon rounded-xl hover:shadow-lg transition">
-              <FaEnvelope className="text-maroon text-2xl mt-1" />
+            {/* Email */}
+            <div className="flex flex-col items-center text-center sm:text-left sm:items-start gap-3 p-6 bg-white/90 text-maroon rounded-xl hover:shadow-lg transition zoom-in">
+              <FaEnvelope className="text-maroon text-3xl" />
               <div>
                 <h4 className="font-semibold">Email</h4>
-                <p>bcwdhostel.surathkal@gov.in</p>
+                <a
+                  href="mailto:bcwdhostel.surathkal@gov.in"
+                  className="hover:underline break-all text-sm mt-1"
+                >
+                  bcwdhostel.surathkal@gov.in
+                </a>
               </div>
             </div>
           </div>
