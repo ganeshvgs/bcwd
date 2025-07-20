@@ -1,24 +1,22 @@
-// src/components/Hero.jsx
 import { useEffect, useState } from "react";
 import hostelBg from "../assets/images/hostel-hero.png";
-import devarajImg from "../assets/images/devaraj.png"; // ✅ Devaraj Aras image
+import devarajImg from "../assets/images/devaraj.png";
 
 export default function Hero() {
   const fullText = "Welcome to BCWD Hostel Surathkal";
+  const words = fullText.split(" ");
   const [displayText, setDisplayText] = useState("");
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const words = fullText.split(" ");
-    let index = 0;
-
-    const interval = setInterval(() => {
-      setDisplayText((prev) => (prev ? `${prev} ${words[index]}` : words[index]));
-      index++;
-      if (index >= words.length) clearInterval(interval);
-    }, 400); // speed between words
-
-    return () => clearInterval(interval);
-  }, []);
+    if (index < words.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText((prev) => (prev ? `${prev} ${words[index]}` : words[index]));
+        setIndex((prev) => prev + 1);
+      }, 400); // timing between each word
+      return () => clearTimeout(timeout);
+    }
+  }, [index]);
 
   return (
     <section
@@ -26,13 +24,13 @@ export default function Hero() {
       className="relative min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 py-10 sm:py-0"
       style={{ backgroundImage: `url(${hostelBg})` }}
     >
-      {/* 🔲 Overlay */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
 
-      {/* ✨ Content */}
+      {/* Content */}
       <div className="relative z-10 text-white flex flex-col items-center justify-center space-y-5 sm:space-y-6">
         
-        {/* 👤 Devaraj Aras Centered Image */}
+        {/* Devaraj Aras Image */}
         <div className="flex flex-col items-center">
           <img
             src={devarajImg}
@@ -44,17 +42,17 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* 🏠 Title - Animated One-by-One Word */}
+        {/* Title */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md leading-tight min-h-[3.5rem] sm:min-h-[4.5rem]">
           {displayText}
         </h1>
 
-        {/* 📜 Description */}
+        {/* Description */}
         <p className="text-base sm:text-lg md:text-xl max-w-2xl px-2 sm:px-0 text-center text-gray-100 drop-shadow-sm">
           A Government of Karnataka initiative under the Backward Class Welfare Department, nurturing 1600+ bright futures since 2002.
         </p>
 
-        {/* 📩 CTA Button */}
+        {/* Button */}
         <a href="#apply">
           <button className="mt-3 border-2 border-maroon text-white px-6 py-2 rounded-full hover:bg-maroon hover:text-white transition duration-300">
             Apply Now
@@ -62,7 +60,7 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* ⬇ Scroll Indicator (hidden on xs) */}
+      {/* Scroll Down Icon */}
       <div className="absolute bottom-6 animate-bounce text-white text-xl z-10 hidden sm:block">
         ↓
       </div>
