@@ -44,13 +44,38 @@
 .slide-in-left {
   animation: slideInLeft 0.8s ease-out both;
 }
+
 /* Optional fade-in class */
 .fade-in {
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
 }
+
 @keyframes fadeIn {
   to {
     opacity: 1;
   }
+}
+
+/* ✅ Shine Effect for Text */
+@keyframes shine {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
+.shine-text {
+  background: linear-gradient(
+    120deg,
+    #ffffff 20%,
+    #facc15 40%,
+    #ffffff 60%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 2.5s linear infinite;
 }
