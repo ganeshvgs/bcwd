@@ -1,7 +1,25 @@
+// src/components/Hero.jsx
+import { useEffect, useState } from "react";
 import hostelBg from "../assets/images/hostel-hero.png";
 import devarajImg from "../assets/images/devaraj.png"; // ✅ Devaraj Aras image
 
 export default function Hero() {
+  const fullText = "Welcome to BCWD Hostel Surathkal";
+  const [displayText, setDisplayText] = useState("");
+
+  useEffect(() => {
+    const words = fullText.split(" ");
+    let index = 0;
+
+    const interval = setInterval(() => {
+      setDisplayText((prev) => (prev ? `${prev} ${words[index]}` : words[index]));
+      index++;
+      if (index >= words.length) clearInterval(interval);
+    }, 400); // speed between words
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="home"
@@ -26,9 +44,9 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* 🏠 Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md leading-tight">
-          Welcome to BCWD Hostel Surathkal
+        {/* 🏠 Title - Animated One-by-One Word */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md leading-tight min-h-[3.5rem] sm:min-h-[4.5rem]">
+          {displayText}
         </h1>
 
         {/* 📜 Description */}
