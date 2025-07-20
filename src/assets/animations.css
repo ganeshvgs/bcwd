@@ -126,3 +126,23 @@
   opacity: 0;
   animation: fadeInLetter 0.3s ease-out forwards;
 }
+@keyframes fadeInLetter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-letter {
+  opacity: 0;
+  animation: fadeInLetter 0.3s ease-out forwards;
+}
+
+/* Optional Glow Effect */
+.glow-text {
+  text-shadow: 0 0 5px #ffd700, 0 0 15px #ffd700, 0 0 30px #ffb300;
+}
