@@ -1,8 +1,17 @@
+// src/components/Hero.jsx
+import { useEffect, useState } from "react";
 import hostelBg from "../assets/images/hostel-hero.png";
 import devarajImg from "../assets/images/devaraj.png";
-import "../assets/animations.css"; // Make sure shine animation is imported
+import "../assets/animations.css";
 
 export default function Hero() {
+  const [showText, setShowText] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowText(true), 500); // Delay typewriter start
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       id="home"
@@ -14,6 +23,7 @@ export default function Hero() {
 
       {/* ✨ Content */}
       <div className="relative z-10 text-white flex flex-col items-center justify-center space-y-5 sm:space-y-6">
+        
         {/* 👤 Devaraj Aras Centered Image */}
         <div className="flex flex-col items-center">
           <img
@@ -26,8 +36,12 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* 🏠 Shine Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md leading-tight relative overflow-hidden shine-text">
+        {/* 🏠 Title with Typewriter and Glow */}
+        <h1
+          className={`text-2xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md leading-tight max-w-xl mx-auto glow-text ${
+            showText ? "typewriter" : "opacity-0"
+          }`}
+        >
           Welcome to BCWD Hostel Surathkal
         </h1>
 
