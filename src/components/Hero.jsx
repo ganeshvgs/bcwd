@@ -5,22 +5,20 @@ import devarajImg from "../assets/images/devaraj.png";
 import "../assets/animations.css";
 
 export default function Hero() {
-  const [animatedLetters, setAnimatedLetters] = useState([]);
-
-  const title = "Welcome to BCWD Hostel Surathkal";
+  const fullText = "Welcome to BCWD Surathkal";
+  const [letters, setLetters] = useState([]);
 
   useEffect(() => {
-    const timeoutIds = [];
-
-    title.split("").forEach((char, index) => {
-      timeoutIds.push(
+    let timeouts = [];
+    [...fullText].forEach((char, index) => {
+      timeouts.push(
         setTimeout(() => {
-          setAnimatedLetters((prev) => [...prev, char]);
-        }, index * 80) // 80ms per letter
+          setLetters((prev) => [...prev, char]);
+        }, index * 80)
       );
     });
 
-    return () => timeoutIds.forEach((id) => clearTimeout(id));
+    return () => timeouts.forEach((t) => clearTimeout(t));
   }, []);
 
   return (
@@ -47,21 +45,21 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* 🏠 Animated Title */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md leading-tight max-w-2xl glow-text">
-          {animatedLetters.map((char, index) => (
-            <span key={index} className="inline-block animate-fade-in-letter">
+        {/* ✨ Title */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md leading-tight glow-text">
+          {letters.map((char, i) => (
+            <span key={i} className="inline-block animate-fade-in-letter">
               {char === " " ? "\u00A0" : char}
             </span>
           ))}
         </h1>
 
-        {/* Description */}
+        {/* 📜 Description */}
         <p className="text-base sm:text-lg md:text-xl max-w-2xl px-2 sm:px-0 text-center text-gray-100 drop-shadow-sm">
           A Government of Karnataka initiative under the Backward Class Welfare Department, nurturing 1600+ bright futures since 2002.
         </p>
 
-        {/* CTA */}
+        {/* 📩 CTA Button */}
         <a href="#apply">
           <button className="mt-3 border-2 border-maroon text-white px-6 py-2 rounded-full hover:bg-maroon hover:text-white transition duration-300">
             Apply Now
@@ -69,7 +67,7 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* ↓ Scroll Indicator */}
+      {/* Scroll Indicator */}
       <div className="absolute bottom-6 animate-bounce text-white text-xl z-10 hidden sm:block">
         ↓
       </div>
