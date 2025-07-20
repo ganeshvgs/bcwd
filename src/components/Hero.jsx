@@ -4,16 +4,15 @@ import devarajImg from "../assets/images/devaraj.png";
 
 export default function Hero() {
   const fullText = "Welcome to BCWD Hostel Surathkal";
-  const words = fullText.split(" ");
   const [displayText, setDisplayText] = useState("");
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (index < words.length) {
+    if (index <= fullText.length) {
       const timeout = setTimeout(() => {
-        setDisplayText((prev) => (prev ? `${prev} ${words[index]}` : words[index]));
-        setIndex((prev) => prev + 1);
-      }, 400); // timing between each word
+        setDisplayText(fullText.slice(0, index));
+        setIndex(index + 1);
+      }, 100); // Speed of typing in ms
       return () => clearTimeout(timeout);
     }
   }, [index]);
@@ -30,7 +29,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 text-white flex flex-col items-center justify-center space-y-5 sm:space-y-6">
         
-        {/* Devaraj Aras Image */}
+        {/* 👤 Devaraj Aras Image */}
         <div className="flex flex-col items-center">
           <img
             src={devarajImg}
@@ -42,17 +41,18 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Title */}
+        {/* ✨ Typing Title */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md leading-tight min-h-[3.5rem] sm:min-h-[4.5rem]">
           {displayText}
+          <span className="border-r-2 border-white animate-pulse ml-1"></span>
         </h1>
 
-        {/* Description */}
+        {/* 📜 Description */}
         <p className="text-base sm:text-lg md:text-xl max-w-2xl px-2 sm:px-0 text-center text-gray-100 drop-shadow-sm">
           A Government of Karnataka initiative under the Backward Class Welfare Department, nurturing 1600+ bright futures since 2002.
         </p>
 
-        {/* Button */}
+        {/* 📩 CTA Button */}
         <a href="#apply">
           <button className="mt-3 border-2 border-maroon text-white px-6 py-2 rounded-full hover:bg-maroon hover:text-white transition duration-300">
             Apply Now
@@ -60,7 +60,7 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* Scroll Down Icon */}
+      {/* ⬇ Scroll Indicator (hidden on xs) */}
       <div className="absolute bottom-6 animate-bounce text-white text-xl z-10 hidden sm:block">
         ↓
       </div>
