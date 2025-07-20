@@ -1,35 +1,20 @@
-import { useEffect, useState } from "react";
 import hostelBg from "../assets/images/hostel-hero.png";
 import devarajImg from "../assets/images/devaraj.png";
+import "../assets/animations.css"; // Make sure shine animation is imported
 
 export default function Hero() {
-  const fullText = "Welcome to BCWD Hostel Surathkal";
-  const [displayText, setDisplayText] = useState("");
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    if (index <= fullText.length) {
-      const timeout = setTimeout(() => {
-        setDisplayText(fullText.slice(0, index));
-        setIndex(index + 1);
-      }, 100); // Speed of typing in ms
-      return () => clearTimeout(timeout);
-    }
-  }, [index]);
-
   return (
     <section
       id="home"
       className="relative min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 py-10 sm:py-0"
       style={{ backgroundImage: `url(${hostelBg})` }}
     >
-      {/* Overlay */}
+      {/* 🔲 Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
 
-      {/* Content */}
+      {/* ✨ Content */}
       <div className="relative z-10 text-white flex flex-col items-center justify-center space-y-5 sm:space-y-6">
-        
-        {/* 👤 Devaraj Aras Image */}
+        {/* 👤 Devaraj Aras Centered Image */}
         <div className="flex flex-col items-center">
           <img
             src={devarajImg}
@@ -41,10 +26,9 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* ✨ Typing Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md leading-tight min-h-[3.5rem] sm:min-h-[4.5rem]">
-          {displayText}
-          <span className="border-r-2 border-white animate-pulse ml-1"></span>
+        {/* 🏠 Shine Title */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md leading-tight relative overflow-hidden shine-text">
+          Welcome to BCWD Hostel Surathkal
         </h1>
 
         {/* 📜 Description */}
