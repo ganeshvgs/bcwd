@@ -44,3 +44,13 @@
 .slide-in-left {
   animation: slideInLeft 0.8s ease-out both;
 }
+/* Optional fade-in class */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
