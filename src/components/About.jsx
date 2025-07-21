@@ -42,7 +42,7 @@ export default function About() {
             <span className={highlightClass}>2002</span>, the BCWD Surathkal Hostel is a proud initiative by the{" "}
             <span className={highlightClass}>Backward Class Welfare Department</span>, Government of Karnataka. Located in the vibrant town of{" "}
             <span className={highlightClass}>Suratkal</span>, our hostel provides a nurturing and disciplined environment for{" "}
-            <span className={highlightClass}>130+ students</span> to grow, learn, and succeed.
+            <span className={highlightClass}>125+ students</span> to grow, learn, and succeed.
           </p>
 
           <p className="mb-8">
