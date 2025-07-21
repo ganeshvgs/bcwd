@@ -29,7 +29,7 @@ export default function Footer() {
           <img
             src="https://images.seeklogo.com/logo-png/40/1/the-karnataka-government-kannada-logo-png_seeklogo-407164.png"
             alt="Karnataka Government Logo"
-            className="h-14 w-14 object-contain drop-shadow-md hover:scale-105 transition-transform duration-300"
+            className="h-14 w-14 object-contain drop-shadow-md hover:scale-105 transition-transform duration-300 rounded-full"
           />
           <div className="text-sm md:text-base font-medium leading-snug text-white">
             <p className="font-semibold">Backward Class Welfare Department</p>
@@ -60,6 +60,24 @@ export default function Footer() {
           All rights reserved. Protected under Copyright Act 1957.
         </p>
       </div>
+
+      {/* 🔼 Back to Top Button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed bottom-5 right-5 z-50 bg-yellow-300 text-maroon rounded-full p-3 shadow-lg hover:bg-yellow-400 transition duration-300"
+        aria-label="Back to top"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+      </button>
     </footer>
   );
 }
