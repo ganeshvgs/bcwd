@@ -85,7 +85,7 @@ export default function Warden() {
         <div className="bg-maroon text-white p-4 flex flex-col items-center">
           <h1 className="text-2xl font-bold">Warden Dashboard</h1>
           {/* ✅ Welcome Message */}
-          <p className="mt-2 text-lg font-semibold">
+          <p className="mt-5 text-lg font-semibold">
             🎉 Welcome <span className="underline">Radhesh</span> 🎉
           </p>
         </div>
