@@ -7,7 +7,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";              // Warden Login
 import StudentLogin from "./pages/StudentLogin"; // Student Login
 import Navbar from "./components/Navbar";         // Your updated Navbar
-import Loader from "./components/Loader";         // 🚀 Add this line
+import Loader from "./components/Loader";   
+import Warden from "./pages/Warden";      // 🚀 Add this line
 
 export default function App() {
   const [loading, setLoading] = useState(true); // ⏳ Loader state
@@ -26,10 +27,12 @@ export default function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/student-login" element={<StudentLogin />} />
-      </Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/student-login" element={<StudentLogin />} />
+  <Route path="/warden" element={<Warden />} />
+</Routes>
+
     </Router>
   );
 }

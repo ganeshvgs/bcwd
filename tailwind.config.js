@@ -1,7 +1,10 @@
 // tailwind.config.js
 module.exports = {
-  darkMode: 'class', // ✅ Add this line
-  content: ["./src/**/*.{js,jsx}"],
+  darkMode: "class",
+  content: [
+    "./public/index.html",  // ✅ include this
+    "./src/**/*.{js,jsx}",  // ✅ scan all React files
+  ],
   theme: {
     extend: {
       colors: {
