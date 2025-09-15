@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000"; // change to your deployed backend URL later
+const API_URL = "https://bcm-backend-9ca9.onrender.com"; // change to your deployed backend URL later
 
 export default function Events() {
   const [events, setEvents] = useState([]);
