@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-// 🔥 Use deployed backend instead of localhost
+// 🔥 Use deployed backend
 const API_URL = "https://bcm-backend-9ca9.onrender.com";
 
 export default function Warden() {
@@ -52,7 +52,6 @@ export default function Warden() {
     } catch (err) {
       setMessage("❌ Something went wrong!");
     }
-    // Clear message after 3 sec
     setTimeout(() => setMessage(""), 3000);
   };
 
@@ -83,12 +82,16 @@ export default function Warden() {
     <>
       <SignedIn>
         {/* Header */}
-        <div className="bg-maroon text-white p-4 flex justify-center items-center">
+        <div className="bg-maroon text-white p-4 flex flex-col items-center">
           <h1 className="text-2xl font-bold">Warden Dashboard</h1>
+          {/* ✅ Welcome Message */}
+          <p className="mt-2 text-lg font-semibold">
+            🎉 Welcome <span className="underline">Radhesh</span> 🎉
+          </p>
         </div>
 
         <div className="p-6 max-w-4xl mx-auto">
-          {/* ✅ Show message */}
+          {/* ✅ Show success/error message */}
           {message && (
             <div className="mb-4 p-3 rounded-lg bg-green-100 text-green-700 text-center shadow">
               {message}
