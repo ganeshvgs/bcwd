@@ -19,6 +19,7 @@ export default function Warden() {
     icon: "🎉",
   });
   const [editingId, setEditingId] = useState(null);
+  const [message, setMessage] = useState(""); // ✅ success/error message
   const { signOut } = useClerk();
 
   const fetchEvents = () =>
@@ -33,18 +34,26 @@ export default function Warden() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (editingId) {
-      await axios.put(`${API_URL}/events/${editingId}`, form);
-      setEditingId(null);
-    } else {
-      if (events.length >= 2) {
-        alert("You can only have 2 events");
-        return;
+    try {
+      if (editingId) {
+        await axios.put(`${API_URL}/events/${editingId}`, form);
+        setMessage("✅ Event updated successfully!");
+        setEditingId(null);
+      } else {
+        if (events.length >= 2) {
+          alert("You can only have 2 events");
+          return;
+        }
+        await axios.post(`${API_URL}/events`, form);
+        setMessage("✅ Event added successfully!");
       }
-      await axios.post(`${API_URL}/events`, form);
+      setForm({ title: "", date: "", description: "", icon: "🎉" });
+      fetchEvents();
+    } catch (err) {
+      setMessage("❌ Something went wrong!");
     }
-    setForm({ title: "", date: "", description: "", icon: "🎉" });
-    fetchEvents();
+    // Clear message after 3 sec
+    setTimeout(() => setMessage(""), 3000);
   };
 
   const handleEdit = (ev) => {
@@ -57,11 +66,16 @@ export default function Warden() {
     });
   };
 
-  // ✅ Delete event
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this event?")) {
-      await axios.delete(`${API_URL}/events/${id}`);
-      fetchEvents();
+      try {
+        await axios.delete(`${API_URL}/events/${id}`);
+        fetchEvents();
+        setMessage("🗑️ Event deleted successfully!");
+      } catch (err) {
+        setMessage("❌ Failed to delete event!");
+      }
+      setTimeout(() => setMessage(""), 3000);
     }
   };
 
@@ -74,6 +88,13 @@ export default function Warden() {
         </div>
 
         <div className="p-6 max-w-4xl mx-auto">
+          {/* ✅ Show message */}
+          {message && (
+            <div className="mb-4 p-3 rounded-lg bg-green-100 text-green-700 text-center shadow">
+              {message}
+            </div>
+          )}
+
           <h2 className="text-3xl font-bold text-maroon mb-4">Manage Events</h2>
 
           {/* Form */}
