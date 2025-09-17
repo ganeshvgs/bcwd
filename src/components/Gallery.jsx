@@ -1,17 +1,10 @@
-import photo1 from "../assets/gallery/photo1.jpg";
-import photo2 from "../assets/gallery/photo2.jpg";
-import photo3 from "../assets/gallery/photo3.jpg";
-import photo4 from "../assets/gallery/photo4.jpg";
-import photo5 from "../assets/gallery/photo5.jpg";
-import photo6 from "../assets/gallery/photo6.png";
-
 const images = [
-  { src: photo1, caption: "Front View of Hostel" },
-  { src: photo2, caption: "Group Photo of Students" },
-  { src: photo3, caption: "Hostel Day / Festival Celebration" },
-  { src: photo4, caption: "Sports Achievements" },
-  { src: photo5, caption: "Main Entrance Area" },
-  { src: photo6, caption: "Meal / Dining" },
+  { src: "https://github.com/ganeshvgs/bcm-images/blob/main/photo1.jpg?raw=true", caption: "Front View of Hostel" },
+  { src: "https://github.com/ganeshvgs/bcm-images/blob/main/photo2.jpg?raw=true", caption: "Group Photo of Students" },
+  { src: "https://github.com/ganeshvgs/bcm-images/blob/main/photo3.jpg?raw=true", caption: "Festival Celebration" },
+  { src: "https://github.com/ganeshvgs/bcm-images/blob/main/photo4.jpg?raw=true", caption: "Sports Achievements" },
+  { src: "https://github.com/ganeshvgs/bcm-images/blob/main/photo5.jpg?raw=true", caption: "Main Entrance Area" },
+  { src: "https://github.com/ganeshvgs/bcm-images/blob/main/photo6.png?raw=true", caption: "Meal / Dining" },
 ];
 
 export default function Gallery() {
